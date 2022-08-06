@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+<link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | E-commerce product page</title>
+
+
+</head>
+<body>
+<nav class="menu-desktop">
+<div class="logo"> <img src="images/logo.svg" alt="Logo"></div>
+<ul class="menu">
+  <li class="lista-menu">Collections</li>
+  <li class="lista-menu">Men</li>
+  <li class="lista-menu">Women</li>
+  <li class="lista-menu">About</li>
+  <li class="lista-menu">Contact</li>
+</ul>
+<div class="carrinho-avatar">
+<img src="images/icon-cart.svg" alt="Carrinho" class="carrinho">
+<img src="images/image-avatar.png" alt="Avatar" class="avatar">
+</div>
+</nav>
+<div class="menu-carrinho">
+  <h1 class="titulo-carrinho"> Cart</h1>
+  <div class="container-carrinho">
+    <div class="imagem-produto"></div>
+    <div class="container-texto-preço-carrinho">
+      <h2 class="titulo2-carrinho">Fall Limited Edition Sneakers</h2>
+      <div class="preço-carrinho">  <strong> </strong></div>
+    </div>
+    <img src="images/icon-delete.svg" alt="" class="deletar">
+  </div>
+  <div class="container-checkout">
+    <span class="checkout">Checkout</span> 
+  </div>
+  
+</div>
+<main>
+
+  <div class="container-imagem" id="imagens">
+    <a href="#imagens-lbox"><div class="imagem-maior"></div></a>
+    <div class="container-imagem-mini">
+      <img src="images/image-product-1-thumbnail.jpg" alt="Produto 1" id="imagem1" class="imagem-mini" >
+      <img src="images/image-product-2-thumbnail.jpg" alt="Produto 2" id="imagem2" class="imagem-mini">
+      <img src="images/image-product-3-thumbnail.jpg" alt="Produto 3" id="imagem3" class="imagem-mini">
+      <img src="images/image-product-4-thumbnail.jpg" alt="Produto 4" id="imagem4" class="imagem-mini">
+    </div>
+  
+  </div> 
+<div class="lbox" id="imagens-lbox">
+ <div class="container-fechar">
+  <a href="#imagens" class="fechar">X</a>
+  <div class="imagem-maior-lb"></div>
+ </div>
+    
+  
+    <div class="container-imagem-mini">
+      <img src="images/image-product-1-thumbnail.jpg" alt="Produto 1" class="imagem-mini" >
+      <img src="images/image-product-2-thumbnail.jpg" alt="Produto 2"  class="imagem-mini">
+      <img src="images/image-product-3-thumbnail.jpg" alt="Produto 3"  class="imagem-mini">
+       <img src="images/image-product-4-thumbnail.jpg" alt="Produto 4"  class="imagem-mini">
+    
+    </div>
+
+</div>
+
+</div>
+
+
+
+<div class="container-texto">
+  <div class="container-texto-princ">
+    <h2>SNEAKER COMPANY</h2>
+  <h1>Fall Limited Edition Sneakers</h1>
+  <p>These Low-profile sneakers are your perfect causal wear companion. Featuring a durable rubber outer sole , they'll
+    withstand everythingthe weather can offer.
+  </p>
+  </div>
+  <div class="container-preço-botão">
+    <div class="container-preço">
+      <span class="preço">$ 125.00</span>
+      <span class="desconto">50%</span>
+    </div>
+      <div class="valor-sem-desconto">$ 250.00</div>
+    
+  
+    <div class="container-botão">
+      <div class="container-quantidade">
+        <img src="images/icon-minus.svg" alt="Menos" class="menos">
+        <span class="numero">0</span>
+        <img src="images/icon-plus.svg" alt="Mais" class="mais">
+      </div>
+      <div class="add-carrinho">
+       <span class="texto-add-cartão">Add to cart</span> 
+      </div>
+    </div>
+  </div>
+  
+</div>
+</main>
+
+</body>
+
+<script>
+/*Declarando todas as variáveis necessárias*/
+let imagem1= document.getElementsByClassName("imagem-mini")[0]
+let imagem2= document.getElementsByClassName("imagem-mini")[1]
+let imagem3= document.getElementsByClassName("imagem-mini")[2]
+let imagem4= document.getElementsByClassName("imagem-mini")[3]
+let imagemlb1= document.getElementsByClassName("imagem-mini")[4]
+let imagemlb2= document.getElementsByClassName("imagem-mini")[5]
+let imagemlb3= document.getElementsByClassName("imagem-mini")[6]
+let imagemlb4= document.getElementsByClassName("imagem-mini")[7]
+ let imagemg = document.getElementsByClassName("imagem-maior")[0]
+ let imagemglb = document.getElementsByClassName("imagem-maior-lb")[0]
+ let numero = document.getElementsByClassName("numero")[0]
+ let imgproduto = document.getElementsByClassName("imagem-produto")[0]
+ let bt_add_carrinho = document.getElementsByClassName("add-carrinho")[0]
+ let preço_carrinho = document.getElementsByClassName("preço-carrinho")[0]
+ let container_carrinho = document.getElementsByClassName("container-carrinho")[0]
+ let container_checkout = document.getElementsByClassName("container-checkout")[0]
+ let menu_carrinho = document.getElementsByClassName("menu-carrinho")[0]
+ let carrinho = document.getElementsByClassName("carrinho")[0]
+
+ let preço = document.getElementsByClassName("preço")[0]
+let deletar = document.getElementsByClassName("deletar")[0]
+
+ let adicionar = document.getElementsByClassName("mais")[0]
+ let subtrair = document.getElementsByClassName("menos")[0]
+/*Adicionando a checagem a primeira imagem e da tela inicial*/
+ numero.innerHTML = "0"
+ imagem1.style.opacity = "0.6"
+ imagem1.style.border = "solid"
+ imagem1.style.borderColor = "hsl(26, 100%, 55%)"
+  preço_carrinho.innerText = "Your Cart is empty!"
+ 
+/*Adicionando a checagem a primeira imagem na light box*/
+imagemg.classList.add("mostrar1")
+imagemlb1.style.opacity = "0.6"
+ imagemlb2.style.borderColor = "transparent"
+ imagemlb3.style.borderColor = "transparent"
+ imagemlb4.style.borderColor = "transparent"
+ imagemlb1.style.borderColor = "hsl(26, 100%, 55%)"
+imagemglb.classList.add("mostrar1")
+/*Adicionando Eventos aos elementos*/
+adicionar.addEventListener("click",add)
+subtrair.addEventListener("click",sub)
+bt_add_carrinho.addEventListener("click",adcimg)
+deletar.addEventListener("click",deleta)
+carrinho.addEventListener("click",mostrarmenu)
+imagem1.addEventListener("click",mostrar1)
+imagem2.addEventListener("click",mostrar2)
+imagem3.addEventListener("click",mostrar3)
+imagem4.addEventListener("click",mostrar4)
+imagemlb1.addEventListener("click",mostrar5)
+imagemlb2.addEventListener("click",mostrar6)
+imagemlb3.addEventListener("click",mostrar7)
+imagemlb4.addEventListener("click",mostrar8)
+
+
+function mostrarmenu(){
+  if(menu_carrinho.classList.contains("mostrar")){
+    menu_carrinho.classList.add("ocultar")
+    menu_carrinho.classList.remove("mostrar")
+  }else{
+    menu_carrinho.classList.add("mostrar")
+    menu_carrinho.classList.remove("ocultar")
+  }
+  
+}
+
+
+function adcimg(){
+  if(parseInt(numero.innerText)<=0){
+    imgproduto.style.borderColor = "white"
+  }else{
+    if (imagemg.classList.contains("mostrar1")){
+    imgproduto.classList.add("mostrar1")
+  }if(imagemg.classList.contains("mostrar2")){
+    imgproduto.classList.add("mostrar2")
+  }if(imagemg.classList.contains("mostrar3")){
+    imgproduto.classList.add("mostrar3")
+  }if(imagemg.classList.contains("mostrar4")){
+    imgproduto.classList.add("mostrar4")
+  }
+  }
+    let valor_final = 125 * parseInt(numero.innerText)
+    preço_carrinho.innerText = (preço.innerText  + " " + "x" + numero.innerText  + " "+"$" + valor_final+".00") 
+    imgproduto.style.display = "block"
+    
+}
+/*Deletando as informações do carrinho*/
+function deleta(){
+ imgproduto.style.display = "none"
+ preço_carrinho.innerText = "Your Cart is empty!"
+}
+
+
+
+
+function add(){
+  let quantidade = parseInt(numero.innerText) 
+  console.log(quantidade)
+  quantidade += 1
+  numero.innerText = quantidade
+}
+function sub(){
+  if(numero.innerHTML <= 0){
+    numero.innerText = 0
+  }else{
+    let quantidade = parseInt(numero.innerText)
+    quantidade -=1
+    numero.innerText = quantidade
+  }
+ 
+}
+/* Funnções para troca de imagens*/
+function mostrar1(){
+  if(imagemg.classList.contains("mostrar1")){
+    imagem1.style.opacity = "0.6"
+    imagem2.style.opacity = "1"
+    imagem3.style.opacity = "1"
+    imagem4.style.opacity = "1"
+
+  }else{
+    imagemg.classList.add("mostrar1")
+    imagem1.style.opacity = "0.6"
+    imagem2.style.opacity = "1"
+    imagem3.style.opacity = "1"
+    imagem4.style.opacity = "1"
+    imagem1.style.border = "solid"
+    imagem1.style.borderColor = "hsl(26, 100%, 55%)"
+    imagem2.style.borderColor = "transparent"
+    imagem3.style.borderColor = "transparent"
+    imagem4.style.borderColor = "transparent"
+    imagemg.classList.remove("mostrar2")
+    imagemg.classList.remove("mostrar3")
+    imagemg.classList.remove("mostrar4")
+
+  }
+}
+function mostrar2(){
+  if(imagemg.classList.contains("mostrar2")){
+    imagem1.style.opacity = "1"
+    imagem2.style.opacity = "0.6"
+    imagem3.style.opacity = "1"
+    imagem4.style.opacity = "1"
+
+  }else{
+   
+    imagemg.classList.remove("mostrar1")
+    imagemg.classList.add("mostrar2")
+    imagem1.style.opacity = "1"
+    imagem2.style.opacity = "0.6"
+    imagem3.style.opacity = "1"
+    imagem4.style.opacity = "1"
+    imagem1.style.borderColor = "transparent"
+    imagem2.style.borderColor = "hsl(26, 100%, 55%)"
+    imagem3.style.borderColor = "transparent"
+    imagem4.style.borderColor = "transparent"
+    imagemg.classList.remove("mostrar3")
+    imagemg.classList.remove("mostrar4")
+
+  }
+}
+function mostrar3(){
+  if(imagemg.classList.contains("mostrar3")){
+    imagem1.style.opacity = "1"
+    imagem2.style.opacity = "1"
+    imagem3.style.opacity = "0.6"
+    imagem4.style.opacity = "1"
+
+  }else{
+    imagemg.classList.remove("mostrar1")
+    imagemg.classList.remove("mostrar2")
+    imagemg.classList.add("mostrar3")
+    imagem1.style.opacity = "1"
+    imagem2.style.opacity = "1"
+    imagem3.style.opacity = "0.6"
+    imagem4.style.opacity = "1"
+    imagem1.style.borderColor = "transparent"
+    imagem2.style.borderColor = "transparent"
+    imagem3.style.borderColor = "hsl(26, 100%, 55%)"
+    imagem4.style.borderColor = "transparent"
+    imagemg.classList.remove("mostrar4")
+
+  }
+}
+function mostrar4(){
+  if(imagemg.classList.contains("mostrar4")){
+    imagem1.style.opacity = "1"
+    imagem2.style.opacity = "1"
+    imagem3.style.opacity = "1"
+    imagem4.style.opacity = "0.6"
+
+  }else{
+    imagemg.classList.remove("mostrar1")
+    imagemg.classList.remove("mostrar2")
+    imagemg.classList.remove("mostrar3")
+    imagemg.classList.add("mostrar4")
+    imagem1.style.opacity = "1"
+    imagem2.style.opacity = "1"
+    imagem3.style.opacity = "1"
+    imagem4.style.opacity = "0.6"
+    imagem1.style.borderColor = "transparent"
+    imagem2.style.borderColor = "transparent"
+    imagem3.style.borderColor = "transparent"
+    imagem4.style.borderColor = "hsl(26, 100%, 55%)"
+
+  }
+}
+/* Funnções para troca de imagens da LIGTH BOX*/
+function mostrar5(){
+  if(imagemglb.classList.contains("mostrar1")){
+    imagemlb1.style.opacity = "0.6"
+    imagemlb2.style.opacity = "1"
+    imagemlb3.style.opacity = "1"
+    imagemlb4.style.opacity = "1"
+
+  }else{
+    imagemglb.classList.add("mostrar1")
+    imagemlb1.style.opacity = "0.6"
+    imagemlb2.style.opacity = "1"
+    imagemlb3.style.opacity = "1"
+    imagemlb4.style.opacity = "1"
+    imagemlb1.style.border = "solid"
+    imagemlb1.style.borderColor = "hsl(26, 100%, 55%)"
+    imagemlb2.style.borderColor = "transparent"
+    imagemlb3.style.borderColor = "transparent"
+    imagemlb4.style.borderColor = "transparent"
+    imagemglb.classList.remove("mostrar2")
+    imagemglb.classList.remove("mostrar3")
+    imagemglb.classList.remove("mostrar4")
+
+  }
+}
+function mostrar6(){
+  if(imagemglb.classList.contains("mostrar2")){
+    imagemlb1.style.opacity = "1"
+    imagemlb2.style.opacity = "0.6"
+    imagemlb3.style.opacity = "1"
+    imagemlb4.style.opacity = "1"
+
+  }else{
+   
+    imagemglb.classList.remove("mostrar1")
+    imagemglb.classList.add("mostrar2")
+    imagemlb1.style.opacity = "1"
+    imagemlb2.style.opacity = "0.6"
+    imagemlb3.style.opacity = "1"
+    imagemlb4.style.opacity = "1"
+    imagemlb1.style.borderColor = "transparent"
+    imagemlb2.style.borderColor = "hsl(26, 100%, 55%)"
+    imagemlb3.style.borderColor = "transparent"
+    imagemlb4.style.borderColor = "transparent"
+    imagemglb.classList.remove("mostrar3")
+    imagemglb.classList.remove("mostrar4")
+
+  }
+}
+function mostrar7(){
+  if(imagemglb.classList.contains("mostrar3")){
+    imagemlb1.style.opacity = "1"
+    imagemlb2.style.opacity = "1"
+    imagemlb3.style.opacity = "0.6"
+    imagemlb4.style.opacity = "1"
+
+  }else{
+    imagemglb.classList.remove("mostrar1")
+    imagemglb.classList.remove("mostrar2")
+    imagemglb.classList.add("mostrar3")
+    imagemlb1.style.opacity = "1"
+    imagemlb2.style.opacity = "1"
+    imagemlb3.style.opacity = "0.6"
+    imagemlb4.style.opacity = "1"
+    imagemlb1.style.borderColor = "transparent"
+    imagemlb2.style.borderColor = "transparent"
+    imagemlb3.style.borderColor = "hsl(26, 100%, 55%)"
+    imagemlb4.style.borderColor = "transparent"
+    imagemglb.classList.remove("mostrar4")
+
+  }
+}
+function mostrar8(){
+  if(imagemglb.classList.contains("mostrar4")){
+    imagemlb1.style.opacity = "1"
+    imagemlb2.style.opacity = "1"
+    imagemlb3.style.opacity = "1"
+    imagemlb4.style.opacity = "0.6"
+
+  }else{
+    imagemglb.classList.remove("mostrar1")
+    imagemglb.classList.remove("mostrar2")
+    imagemglb.classList.remove("mostrar3")
+    imagemglb.classList.add("mostrar4")
+    imagemlb1.style.opacity = "1"
+    imagemlb2.style.opacity = "1"
+    imagemlb3.style.opacity = "1"
+    imagemlb4.style.opacity = "0.6"
+    imagemlb1.style.borderColor = "transparent"
+    imagemlb2.style.borderColor = "transparent"
+    imagemlb3.style.borderColor = "transparent"
+    imagemlb4.style.borderColor = "hsl(26, 100%, 55%)"
+
+  }
+}
+
+</script>
+</html>
