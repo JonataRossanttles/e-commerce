@@ -12,6 +12,7 @@
 </head>
 <body>
 <nav class="menu-desktop">
+  <img src="images/icon-menu.svg" alt="" class="hamburguer">
 <div class="logo"> <img src="images/logo.svg" alt="Logo"></div>
 <ul class="menu">
   <li class="lista-menu">Collections</li>
@@ -25,6 +26,17 @@
 <img src="images/image-avatar.png" alt="Avatar" class="avatar">
 </div>
 </nav>
+<div class="container-menu-mobile">
+  <nav class="menu-mobile">
+    <img src="images/icon-close.svg" alt="" class="fechar_menu_mob">
+    <ul class="menu-mob">
+      <li class="lista-menu-mob">Collections</li>
+      <li class="lista-menu-mob">Men</li>
+      <li class="lista-menu-mob">Women</li>
+      <li class="lista-menu-mob">About</li>
+      <li class="lista-menu-mob">Contact</li>
+    </ul>
+</div>
 <div class="menu-carrinho">
   <h1 class="titulo-carrinho"> Cart</h1>
   <div class="container-carrinho">
@@ -43,7 +55,15 @@
 <main>
 
   <div class="container-imagem" id="imagens">
-    <a href="#imagens-lbox"><div class="imagem-maior"></div></a>
+    <div class="container-imagem-maior">
+      <a href="#imagens-lbox"> </a><div class="imagem-maior">
+        <img src="images/icon-previous.svg" alt="" class="passar-img" id="anterior">
+        <img src="images/icon-next.svg" alt="" class="passar-img" id="proxima">
+      </div>
+    
+     
+    </div>
+   
     <div class="container-imagem-mini">
       <img src="images/image-product-1-thumbnail.jpg" alt="Produto 1" id="imagem1" class="imagem-mini" >
       <img src="images/image-product-2-thumbnail.jpg" alt="Produto 2" id="imagem2" class="imagem-mini">
@@ -55,7 +75,10 @@
 <div class="lbox" id="imagens-lbox">
  <div class="container-fechar">
   <a href="#imagens" class="fechar">X</a>
-  <div class="imagem-maior-lb"></div>
+  <div class="imagem-maior-lb">
+    <img src="images/icon-previous.svg" alt="" class="passar-img" id="anterior2" >
+    <img src="images/icon-next.svg" alt="" class="passar-img" id="proxima2">
+  </div>
  </div>
     
   
@@ -107,7 +130,7 @@
 </body>
 
 <script>
-/*Declarando todas as variáveis necessárias*/
+/*Declarando todas as variáveis para imagens*/
 let imagem1= document.getElementsByClassName("imagem-mini")[0]
 let imagem2= document.getElementsByClassName("imagem-mini")[1]
 let imagem3= document.getElementsByClassName("imagem-mini")[2]
@@ -118,6 +141,7 @@ let imagemlb3= document.getElementsByClassName("imagem-mini")[6]
 let imagemlb4= document.getElementsByClassName("imagem-mini")[7]
  let imagemg = document.getElementsByClassName("imagem-maior")[0]
  let imagemglb = document.getElementsByClassName("imagem-maior-lb")[0]
+ /*Declarando todas as variáveis para Cálculos e elementos do HTML*/
  let numero = document.getElementsByClassName("numero")[0]
  let imgproduto = document.getElementsByClassName("imagem-produto")[0]
  let bt_add_carrinho = document.getElementsByClassName("add-carrinho")[0]
@@ -126,10 +150,13 @@ let imagemlb4= document.getElementsByClassName("imagem-mini")[7]
  let container_checkout = document.getElementsByClassName("container-checkout")[0]
  let menu_carrinho = document.getElementsByClassName("menu-carrinho")[0]
  let carrinho = document.getElementsByClassName("carrinho")[0]
-
+ let menu_mobile = document.getElementsByClassName("container-menu-mobile")[0]
+ let hamburguer = document.getElementsByClassName("hamburguer")[0]
+ let fechar_menu = document.getElementsByClassName("fechar_menu_mob")[0]
  let preço = document.getElementsByClassName("preço")[0]
-let deletar = document.getElementsByClassName("deletar")[0]
-
+ let anterior = document.getElementById("anterior")
+ let proxima = document.getElementById("proxima")
+ let deletar = document.getElementsByClassName("deletar")[0]
  let adicionar = document.getElementsByClassName("mais")[0]
  let subtrair = document.getElementsByClassName("menos")[0]
 /*Adicionando a checagem a primeira imagem e da tela inicial*/
@@ -153,6 +180,9 @@ subtrair.addEventListener("click",sub)
 bt_add_carrinho.addEventListener("click",adcimg)
 deletar.addEventListener("click",deleta)
 carrinho.addEventListener("click",mostrarmenu)
+hamburguer.addEventListener("click",mostrarmenumob)
+fechar_menu.addEventListener("click",mostrarmenumob)
+proxima.addEventListener("click",passar)
 imagem1.addEventListener("click",mostrar1)
 imagem2.addEventListener("click",mostrar2)
 imagem3.addEventListener("click",mostrar3)
@@ -163,6 +193,45 @@ imagemlb3.addEventListener("click",mostrar7)
 imagemlb4.addEventListener("click",mostrar8)
 
 
+/*Passar para a próxima imagem*/
+function passar(){
+  if(imagemg.classList.contains("mostrar1")){
+     
+    imagemg.classList.add("mostrar2")
+   
+  }
+  if(imagemg.classList.contains("mostrar2")){
+    imagemg.classList.add("mostrar3")
+    imagemg.classList.remove("mostrar1") 
+    imagemg.classList.remove("mostrar2") 
+    imagemg.classList.remove("mostrar4") 
+    
+  }
+ 
+}
+
+
+
+
+/*Função para mostrar o Menu Mobile*/
+function mostrarmenumob(){
+  if(menu_mobile.classList.contains("mostrar"))  {
+    menu_mobile.classList.add("ocultar")
+    menu_mobile.classList.remove("mostrar")
+    anterior.classList.remove("ocultar")
+    proxima.classList.remove("ocultar")
+  }else{
+    menu_mobile.classList.add("mostrar")
+    menu_mobile.classList.remove("ocultar")
+    anterior.classList.add("ocultar")
+    proxima.classList.add("ocultar")
+  }
+}
+
+
+
+
+/*Função para mostrar o menu do carrinho*/
 function mostrarmenu(){
   if(menu_carrinho.classList.contains("mostrar")){
     menu_carrinho.classList.add("ocultar")
@@ -174,7 +243,7 @@ function mostrarmenu(){
   
 }
 
-
+/*Função para mostrar o produto e o valor que vai ser pago no menu do carrinho*/
 function adcimg(){
   if(parseInt(numero.innerText)<=0){
     imgproduto.style.borderColor = "white"
@@ -199,16 +268,14 @@ function deleta(){
  imgproduto.style.display = "none"
  preço_carrinho.innerText = "Your Cart is empty!"
 }
-
-
-
-
+/*adicionar a quantidade que vai ser comprada*/
 function add(){
   let quantidade = parseInt(numero.innerText) 
   console.log(quantidade)
   quantidade += 1
   numero.innerText = quantidade
 }
+/*Subbtrair a quantidade que vai ser comprada*/
 function sub(){
   if(numero.innerHTML <= 0){
     numero.innerText = 0
@@ -219,7 +286,7 @@ function sub(){
   }
  
 }
-/* Funnções para troca de imagens*/
+/* Funções para troca de imagens*/
 function mostrar1(){
   if(imagemg.classList.contains("mostrar1")){
     imagem1.style.opacity = "0.6"
