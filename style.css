@@ -556,11 +556,25 @@ width: 50%;
     #anterior , #proxima{
         display: block;
     }
+   
     .container-imagem-maior a{
         width: 0;
     }
+    #proxima {
+        position: relative;
+        right: -80%;
+    }
    
 }
+
+@media screen and (max-width:450px){
+
+    #proxima {
+     position: relative;
+     right: -77%;
+ } 
+ }
+
 
 @media screen and (max-width:408px){
    .menu-carrinho{
