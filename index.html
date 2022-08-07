@@ -77,8 +77,8 @@
  <div class="container-fechar">
   <a href="#imagens" class="fechar">X</a>
   <div class="imagem-maior-lb">
-    <img src="images/icon-previous.svg" alt="" class="passar-img" id="anterior2" >
-    <img src="images/icon-next.svg" alt="" class="passar-img" id="proxima2">
+    <!--<img src="images/icon-previous.svg" alt="" class="passar-img" id="anterior2" >
+    <img src="images/icon-next.svg" alt="" class="passar-img" id="proxima2">-->
   </div>
  </div>
     
@@ -185,6 +185,7 @@ deletar.addEventListener("click",deleta)
 carrinho.addEventListener("click",mostrarmenu)
 hamburguer.addEventListener("click",mostrarmenumob)
 fechar_menu.addEventListener("click",mostrarmenumob)
+anterior.addEventListener("click",voltar)
 proxima.addEventListener("click",passar)
 imagem1.addEventListener("click",mostrar1)
 imagem2.addEventListener("click",mostrar2)
@@ -196,25 +197,44 @@ imagemlb3.addEventListener("click",mostrar7)
 imagemlb4.addEventListener("click",mostrar8)
 
 
+
+/*Passar para a próxima imagem*/
+function voltar(){
+  if(imagemg.classList.contains("mostrar4")){
+     
+    imagemg.classList.add("mostrar3")
+    imagemg.classList.remove("mostrar4")
+  }else if(imagemg.classList.contains("mostrar3")){
+    imagemg.classList.add("mostrar2")
+    imagemg.classList.remove("mostrar3")
+  }else if(imagemg.classList.contains("mostrar2")){
+    imagemg.classList.add("mostrar1")
+    imagemg.classList.remove("mostrar2")
+  }else if(imagemg.classList.contains("mostrar1")){
+    imagemg.classList.add("mostrar4")
+    imagemg.classList.remove("mostrar1")
+  }
+
+}
+
 /*Passar para a próxima imagem*/
 function passar(){
   if(imagemg.classList.contains("mostrar1")){
      
     imagemg.classList.add("mostrar2")
-   
-  }
-  if(imagemg.classList.contains("mostrar2")){
+    imagemg.classList.remove("mostrar1")
+  }else if(imagemg.classList.contains("mostrar2")){
     imagemg.classList.add("mostrar3")
-    imagemg.classList.remove("mostrar1") 
-    imagemg.classList.remove("mostrar2") 
-    imagemg.classList.remove("mostrar4") 
-    
+    imagemg.classList.remove("mostrar2")
+  }else if(imagemg.classList.contains("mostrar3")){
+    imagemg.classList.add("mostrar4")
+    imagemg.classList.remove("mostrar3")
+  }else if(imagemg.classList.contains("mostrar4")){
+    imagemg.classList.add("mostrar1")
+    imagemg.classList.remove("mostrar4")
   }
- 
+
 }
-
-
-
 
 /*Função para mostrar o Menu Mobile*/
 function mostrarmenumob(){
@@ -230,9 +250,6 @@ function mostrarmenumob(){
     proxima.classList.add("ocultar")
   }
 }
-
-
-
 
 /*Função para mostrar o menu do carrinho*/
 function mostrarmenu(){
