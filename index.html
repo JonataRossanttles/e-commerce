@@ -269,13 +269,26 @@ function adcimg(){
     imgproduto.style.borderColor = "white"
   }else{
     if (imagemg.classList.contains("mostrar1")){
+
     imgproduto.classList.add("mostrar1")
+    imgproduto.classList.remove("mostrar2")
+    imgproduto.classList.remove("mostrar3")
+    imgproduto.classList.remove("mostrar4")
   }if(imagemg.classList.contains("mostrar2")){
     imgproduto.classList.add("mostrar2")
+    imgproduto.classList.remove("mostrar1")
+    imgproduto.classList.remove("mostrar3")
+    imgproduto.classList.remove("mostrar4")
   }if(imagemg.classList.contains("mostrar3")){
     imgproduto.classList.add("mostrar3")
+    imgproduto.classList.remove("mostrar1")
+    imgproduto.classList.remove("mostrar2")
+    imgproduto.classList.remove("mostrar4")
   }if(imagemg.classList.contains("mostrar4")){
     imgproduto.classList.add("mostrar4")
+    imgproduto.classList.remove("mostrar1")
+    imgproduto.classList.remove("mostrar2")
+    imgproduto.classList.remove("mostrar3")
   }
   }
     let valor_final = 125 * parseInt(numero.innerText)
