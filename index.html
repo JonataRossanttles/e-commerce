@@ -22,6 +22,7 @@
   <li class="lista-menu">Contact</li>
 </ul>
 <div class="carrinho-avatar">
+<div class="bolinha-carrinho"></div>
 <img src="images/icon-cart.svg" alt="Carrinho" class="carrinho">
 <img src="images/image-avatar.png" alt="Avatar" class="avatar">
 </div>
@@ -156,16 +157,18 @@ let imagemlb4= document.getElementsByClassName("imagem-mini")[7]
  let preço = document.getElementsByClassName("preço")[0]
  let anterior = document.getElementById("anterior")
  let proxima = document.getElementById("proxima")
+ let bolinha_carrinho = document.getElementsByClassName("bolinha-carrinho")[0]
  let deletar = document.getElementsByClassName("deletar")[0]
  let adicionar = document.getElementsByClassName("mais")[0]
  let subtrair = document.getElementsByClassName("menos")[0]
+ 
 /*Adicionando a checagem a primeira imagem e da tela inicial*/
  numero.innerHTML = "0"
  imagem1.style.opacity = "0.6"
  imagem1.style.border = "solid"
  imagem1.style.borderColor = "hsl(26, 100%, 55%)"
   preço_carrinho.innerText = "Your Cart is empty!"
- 
+  bolinha_carrinho.classList.add("ocultar")
 /*Adicionando a checagem a primeira imagem na light box*/
 imagemg.classList.add("mostrar1")
 imagemlb1.style.opacity = "0.6"
@@ -261,12 +264,17 @@ function adcimg(){
     let valor_final = 125 * parseInt(numero.innerText)
     preço_carrinho.innerText = (preço.innerText  + " " + "x" + numero.innerText  + " "+"$" + valor_final+".00") 
     imgproduto.style.display = "block"
+    bolinha_carrinho.classList.add("mostrar")
+    bolinha_carrinho.classList.remove("ocultar")
+    bolinha_carrinho.innerText = numero.innerText
     
 }
 /*Deletando as informações do carrinho*/
 function deleta(){
  imgproduto.style.display = "none"
  preço_carrinho.innerText = "Your Cart is empty!"
+ bolinha_carrinho.classList.add("ocultar")
+ bolinha_carrinho.classList.remove("mostrar")
 }
 /*adicionar a quantidade que vai ser comprada*/
 function add(){
